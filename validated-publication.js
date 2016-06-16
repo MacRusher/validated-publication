@@ -1,5 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {Match, check} from 'meteor/check';
+import {_} from 'meteor/underscore';
 
 /**
  * Create new publication
@@ -76,7 +77,7 @@ export class ValidatedPublication {
         const validateResult = this.validate.bind(invocation)(args);
 
         if (typeof validateResult !== 'undefined') {
-            throw new Error(`Returning from validate doesn't do anything; perhaps you meant to throw an error? Check ValidatedMethod named ${this.name}`);
+            throw new Error(`Validate function should not return a value. Check ValidatedMethod named ${this.name}`);
         }
 
         return this.run.bind(invocation)(args);

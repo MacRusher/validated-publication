@@ -1,5 +1,5 @@
 Package.describe({
-    name: 'macrusher:validated-publication',
+    name: 'spaceapps:validated-publication',
     version: '0.1.0',
     summary: 'A simple wrapper for Meteor.publish, inspired by mdg:validated-method',
     git: 'git@github.com:MacRusher/validated-publication.git',
@@ -19,6 +19,6 @@ Package.onUse(function (api) {
 Package.onTest(function (api) {
     api.use('ecmascript');
     api.use('tinytest');
-    api.use('macrusher:validated-publication');
+    api.use('spaceapps:validated-publication');
     api.mainModule('validated-publication-tests.js');
 });

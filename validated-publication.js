@@ -8,7 +8,7 @@ import {Match, check} from 'meteor/check';
  * @param {Function[]} [options.mixins=[]] - mixins to enhance the publication
  * @param {Function} options.validate - function to validate arguments
  * @param {Function} options.run - publication body
- * @param {Object} [options.connection=Meteor] - Connection object
+ * @param {Function} [options.publishMethod=Meteor.publish] - Method used for actual publication
  */
 export class ValidatedPublication {
 
@@ -17,7 +17,7 @@ export class ValidatedPublication {
         // Apply default values
         _.defaults(options, {
             mixins: [],
-            connection: Meteor
+            publishMethod: Meteor.publish
         });
 
         // Verify initial options
@@ -27,8 +27,8 @@ export class ValidatedPublication {
         if (!Match.test(options.mixins, [Function])) {
             throw new Error(`Mixins must be an array of functions for ValidatedPublication named ${options.name}`);
         }
-        if (!Match.test(options.connection, Object)) {
-            throw new Error(`You need to specify a connection object for ValidatedPublication named ${options.name}`);
+        if (!Match.test(options.publishMethod, Function)) {
+            throw new Error(`You need to provide publishMethod for ValidatedPublication named ${options.name}`);
         }
 
         // Let the mixins do the magic
@@ -52,8 +52,8 @@ export class ValidatedPublication {
         if (!Match.test(options.run, Function)) {
             throw new Error(`You need to provide a run function for ValidatedPublication named ${options.name}`);
         }
-        if (!Match.test(options.connection, Object)) {
-            throw new Error(`You need to specify a connection object for ValidatedPublication named ${options.name}`);
+        if (!Match.test(options.publishMethod, Function)) {
+            throw new Error(`You need to provide publishMethod for ValidatedPublication named ${options.name}`);
         }
 
         // Attach all options to the instance
@@ -62,7 +62,7 @@ export class ValidatedPublication {
         const publication = this;
 
         // Create the real publication
-        this.connection.publish(this.name, function validatedPublication (args) {
+        this.publishMethod(this.name, function validatedPublication (args) {
             // Silence audit-argument-checks since arguments are always checked when using this package
             check(args, Match.Any);
             return publication._execute(this, args);

@@ -1,0 +1,32 @@
+{
+  "name": "validated-publication",
+  "version": "0.0.1",
+  "description": "A simple wrapper for Meteor.publish, inspired by mdg:validated-method",
+  "scripts": {
+    "test": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MacRusher/validated-publication.git"
+  },
+  "main": "validated-publication.js",
+  "keywords": [
+    "Meteor"
+  ],
+  "author": "maciek@spaceapps.pl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MacRusher/validated-publication/issues"
+  },
+  "homepage": "https://github.com/MacRusher/validated-publication#readme",
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.12.0",
+    "eslint-config-vazco": "^1.0.0",
+    "eslint-plugin-babel": "^3.2.0",
+    "eslint-plugin-react": "^5.1.1"
+  },
+  "eslintConfig": {
+    "extends": "vazco"
+  }
+}

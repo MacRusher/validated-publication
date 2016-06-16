@@ -1,4 +1,5 @@
 /* global Package: false */
+/* eslint-disable func-names */
 
 Package.describe({
     name: 'spaceapps:validated-publication',
@@ -8,7 +9,7 @@ Package.describe({
     documentation: 'README.md'
 });
 
-Package.onUse(api => {
+Package.onUse(function (api) {
     api.versionsFrom('1.3.2.4');
     api.use([
         'ecmascript',
@@ -18,7 +19,7 @@ Package.onUse(api => {
     api.mainModule('validated-publication.js');
 });
 
-Package.onTest(api => {
+Package.onTest(function (api) {
     api.use('ecmascript');
     api.use('tinytest');
     api.use('spaceapps:validated-publication');

@@ -1,6 +1,6 @@
 {
   "name": "validated-publication",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple wrapper for Meteor.publish, inspired by mdg:validated-method",
   "scripts": {
     "test": "eslint ."
